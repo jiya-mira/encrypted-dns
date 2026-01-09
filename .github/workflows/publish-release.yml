@@ -1,0 +1,62 @@
+name: 🚀 Publish Signed Profiles
+
+# Trigger: Only run when files in the 'signed/' directory are modified on the master branch.
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'signed/**'
+
+# Permissions: Grant write access to contents to create releases.
+permissions:
+  contents: write
+
+# Concurrency Control:
+# If a new push occurs while a workflow is running, cancel the old one.
+# This ensures only the latest version is deployed and prevents tag conflicts.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Release Tag
+        id: tag
+        # Generates a timestamp-based version (e.g., v2025.06.07-1200)
+        run: |
+          echo "release_date=$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_OUTPUT
+          echo "display_date=$(date +'%Y-%m-%d %H:%M')" >> $GITHUB_OUTPUT
+
+      - name: Create Release & Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.tag.outputs.release_date }}
+          name: 📅 Auto-Update ${{ steps.tag.outputs.display_date }}
+          draft: false
+          prerelease: false
+          make_latest: true
+          body: |
+            ## 🚀 Automatic Profile Update
+            
+            These encrypted DNS profiles have been automatically regenerated and signed with a valid certificate.
+            
+            ### 📥 Installation Guide
+            
+            1. **Download**: Scroll down to the **Assets** section below.
+            2. **Select**: Click on the `.mobileconfig` file corresponding to your preferred provider (e.g., `ali-doh.mobileconfig`).
+            3. **Install on iOS**:
+               - Open **Settings**.
+               - Tap **Profile Downloaded** near the top.
+               - Follow the prompts to **Install**.
+            4. **Install on macOS**:
+               - Open **System Settings** -> **Privacy & Security** -> **Profiles**.
+               - Open the downloaded file to install.
+          
+          files: |
+            signed/*.mobileconfig
