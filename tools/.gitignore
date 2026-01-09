@@ -1,0 +1,7 @@
+# tools/.gitignore
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+uv.lock
+.state

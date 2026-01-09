@@ -1,0 +1,28 @@
+# tools/config.example.toml
+
+[paths]
+# Relative paths are resolved relative to the directory containing this config file.
+profiles_dir = "../profiles"
+out_signed_dir = "../signed"
+
+[signing]
+signer_cert = "~/Downloads/certs/*.angleline.cn.cer"
+signer_key = "~/Downloads/certs/*.angleline.cn.key"
+# Recommended. Providing the full chain bundle (Intermediate CA) prevents 
+# the red "Unverified" warning on iOS/macOS devices.
+chain_bundle = "~/Downloads/certs/ca.cer"
+
+# Optional: Override the default PayloadIdentifier.
+# If not set, it defaults to "{CommonName}.encrypted-dns".
+# new_payload_identifier = "cn.angleline.encrypted-dns"
+
+# Optional: Read the private key passphrase from an environment variable.
+# This enables fully automated (headless) signing in CI/CD environments.
+# Usage: export SIGNER_PASS="your_password" before running the script.
+# passphrase_env = "SIGNER_PASS"
+
+[runtime]
+# Concurrency level (async workers). Defaults to the number of CPU cores available.
+concurrency = 1
+# Whether to clean (delete) the output directory contents before signing.
+clear_output_dir = true
