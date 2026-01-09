@@ -23,6 +23,6 @@ chain_bundle = "~/Downloads/certs/ca.cer"
 
 [runtime]
 # Concurrency level (async workers). Defaults to the number of CPU cores available.
-concurrency = 1
+# concurrency = 1
 # Whether to clean (delete) the output directory contents before signing.
-clear_output_dir = true
+# clear_output_dir = true
