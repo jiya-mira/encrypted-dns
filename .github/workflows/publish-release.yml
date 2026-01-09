@@ -1,6 +1,6 @@
-name: 🚀 Publish Signed Profiles
+name: 🔄 Update Rolling Release
 
-# Trigger: Only run when files in the 'signed/' directory are modified on the master branch.
+# Trigger: Push to master branch affecting 'signed/' folder.
 on:
   push:
     branches:
@@ -8,55 +8,53 @@ on:
     paths:
       - 'signed/**'
 
-# Permissions: Grant write access to contents to create releases.
 permissions:
   contents: write
 
-# Concurrency Control:
-# If a new push occurs while a workflow is running, cancel the old one.
-# This ensures only the latest version is deployed and prevents tag conflicts.
+# Concurrency: Cancel any in-progress jobs to ensure only the latest state is published.
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-rolling
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  update-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          # We need full history to move the tag properly
+          fetch-depth: 0
 
-      - name: Generate Release Tag
-        id: tag
-        # Generates a timestamp-based version (e.g., v2025.06.07-1200)
+      - name: Update 'latest' Tag
+        # This step forces the 'latest' tag to move to the current commit.
+        # It creates a "moving target" that always points to the newest code.
         run: |
-          echo "release_date=$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_OUTPUT
-          echo "display_date=$(date +'%Y-%m-%d %H:%M')" >> $GITHUB_OUTPUT
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -f latest
+          git push -f origin latest
 
-      - name: Create Release & Upload Assets
+      - name: Publish Rolling Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.tag.outputs.release_date }}
-          name: 📅 Auto-Update ${{ steps.tag.outputs.display_date }}
+          tag_name: latest
+          name: 🚀 Latest Auto-Update
           draft: false
           prerelease: false
           make_latest: true
+          # This ensures old assets are replaced by new ones
+          files: signed/*.mobileconfig
           body: |
-            ## 🚀 Automatic Profile Update
+            ## 🟢 Latest Signed Profiles
             
-            These encrypted DNS profiles have been automatically regenerated and signed with a valid certificate.
+            **Last Updated:** ${{ github.event.head_commit.timestamp }}
+            
+            This release is automatically updated to reflect the latest changes in the `signed/` directory.
             
             ### 📥 Installation Guide
             
-            1. **Download**: Scroll down to the **Assets** section below.
-            2. **Select**: Click on the `.mobileconfig` file corresponding to your preferred provider (e.g., `ali-doh.mobileconfig`).
-            3. **Install on iOS**:
-               - Open **Settings**.
-               - Tap **Profile Downloaded** near the top.
-               - Follow the prompts to **Install**.
-            4. **Install on macOS**:
-               - Open **System Settings** -> **Privacy & Security** -> **Profiles**.
-               - Open the downloaded file to install.
-          
-          files: |
-            signed/*.mobileconfig
+            1. **Download**: Click on the `.mobileconfig` file you need in the **Assets** section below.
+            2. **Install**:
+               - **iOS**: Settings -> Profile Downloaded -> Install.
+               - **macOS**: System Settings -> Privacy & Security -> Profiles.
