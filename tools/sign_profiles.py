@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import ipaddress
 import os
 import plistlib
 import shutil
@@ -156,6 +157,56 @@ def _ensure_list(obj: object) -> list[Any]:
     return obj
 
 
+def _normalize_ip_address(value: str) -> str:
+    s = value.strip()
+    if not s:
+        raise ValueError("empty IP address")
+    try:
+        return str(ipaddress.ip_address(s))
+    except ValueError as e:
+        raise ValueError(f"invalid IP address: {value!r}") from e
+
+
+def _normalize_server_addresses(
+    item_dict: dict[str, Any],
+    *,
+    payload_index: int,
+    rel_path: Path,
+) -> None:
+    dns_settings = item_dict.get("DNSSettings")
+    if dns_settings is None:
+        return
+    if not isinstance(dns_settings, dict):
+        raise ValueError(
+            f"dnssettings is not a dict: {rel_path.as_posix()} payload[{payload_index}]"
+        )
+
+    addrs = dns_settings.get("ServerAddresses")
+    if addrs is None:
+        return
+    if not isinstance(addrs, list):
+        raise ValueError(
+            f"serveraddresses is not a list: {rel_path.as_posix()} payload[{payload_index}]"
+        )
+
+    normalized: list[str] = []
+    for addr_index, addr in enumerate(addrs):
+        if not isinstance(addr, str):
+            raise ValueError(
+                f"server address is not a string: {rel_path.as_posix()} payload[{payload_index}]"
+                f" server[{addr_index}]"
+            )
+        try:
+            normalized.append(_normalize_ip_address(addr))
+        except ValueError as e:
+            raise ValueError(
+                f"invalid server address: {rel_path.as_posix()} payload[{payload_index}]"
+                f" server[{addr_index}] ({e})"
+            ) from e
+
+    dns_settings["ServerAddresses"] = normalized
+
+
 def _patch_profile_dict(
     root: dict[str, Any],
     *,
@@ -190,6 +241,7 @@ def _patch_profile_dict(
         if not isinstance(item, dict):
             continue
         item_dict: dict[str, Any] = item  # narrow type
+        _normalize_server_addresses(item_dict, payload_index=i, rel_path=rel_path)
 
         if "PayloadUUID" in item_dict:
             pu = _uuid_v5_upper(f"{root_identifier}::payload::{i}::{rel}")
