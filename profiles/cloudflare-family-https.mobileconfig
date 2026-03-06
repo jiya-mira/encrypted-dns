@@ -20,15 +20,15 @@
 				<string>https://family.cloudflare-dns.com/dns-query</string>
 			</dict>
 			<key>PayloadDescription</key>
-			<string>Configures device to use Cloudflare Family Encrypted DNS over HTTPS</string>
+			<string>Configures device to use Cloudflare 1.1.1.1 Family Encrypted DNS over HTTPS</string>
 			<key>PayloadDisplayName</key>
-			<string>Cloudflare Family DNS over HTTPS</string>
+			<string>Cloudflare 1.1.1.1 Family Encrypted DNS over HTTPS</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.dnsSettings.managed.9d6e5fdf-e404-4f34-ae94-27ed2f636ac4</string>
+			<string>com.apple.dnsSettings.managed.a0655c38-5f1b-5fff-81f5-a8db009bd2b6</string>
 			<key>PayloadType</key>
 			<string>com.apple.dnsSettings.managed</string>
 			<key>PayloadUUID</key>
-			<string>35d5c8a0-afa6-4b36-a9fe-099a997b44ad</string>
+			<string>A0655C38-5F1B-5FFF-81F5-A8DB009BD2B6</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>ProhibitDisablement</key>
@@ -36,9 +36,12 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Adds the Cloudflare DNS to Big Sur and iOS 14 based systems</string>
+	<string>Configures device to use Cloudflare 1.1.1.1 Family over HTTPS
+Operated by Cloudflare Inc. Blocks malware, phishing &amp; adult content.
+Server location: 🇺🇸.
+Filtering: yes</string>
 	<key>PayloadDisplayName</key>
-	<string>Cloudflare Family DNS over HTTPS</string>
+	<string>Cloudflare 1.1.1.1 Family Encrypted DNS over HTTPS</string>
 	<key>PayloadIdentifier</key>
 	<string>com.paulmillr.apple-dns</string>
 	<key>PayloadRemovalDisallowed</key>
@@ -48,7 +51,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>A4475135-633A-4F15-A79B-BE15093DC97A</string>
+	<string>5C8E3428-5F84-5227-865A-58884EEFEB63</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>

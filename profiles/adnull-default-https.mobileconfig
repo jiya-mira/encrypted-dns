@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>HTTPS</string>
+				<key>ServerURL</key>
+				<string>https://dns.adnull.com/dns-query</string>
+			</dict>
+			<key>PayloadDescription</key>
+			<string>Configures device to use ADNull DNS Encrypted DNS over HTTPS</string>
+			<key>PayloadDisplayName</key>
+			<string>ADNull DNS Encrypted DNS over HTTPS</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.dnsSettings.managed.200e0c5a-aa1a-5586-bb97-0a5cc0352ce8</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>200E0C5A-AA1A-5586-BB97-0A5CC0352CE8</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>ProhibitDisablement</key>
+			<false/>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Configures device to use ADNull DNS over HTTPS
+Public DNS operated by ADNull. Blocks ads &amp; tracking. Paid plans offer personalized DNS with advanced ad and phishing blocking.
+Server location: 🇺🇦.
+Filtering: yes</string>
+	<key>ConsentText</key>
+	<dict>
+		<key>default</key>
+		<string>Free public DNS service by ADNull. Paid subscribers get a personalized subdomain (e.g. abc123.dns.adnull.com/dns-query) with customizable ad and phishing blocking — replace the hostname in the profile with your own before installing. Privacy policy: https://adnull.com/privacy</string>
+	</dict>
+	<key>PayloadDisplayName</key>
+	<string>ADNull DNS Encrypted DNS over HTTPS</string>
+	<key>PayloadIdentifier</key>
+	<string>com.paulmillr.apple-dns</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>E7614DC1-233A-5920-AC98-F6BA3C164777</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

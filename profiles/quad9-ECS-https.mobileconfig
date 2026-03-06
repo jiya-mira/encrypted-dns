@@ -20,15 +20,15 @@
 				<string>https://dns11.quad9.net/dns-query</string>
 			</dict>
 			<key>PayloadDescription</key>
-			<string>Configures device to use Quad9 Encrypted DNS over HTTPS with ECS</string>
+			<string>Configures device to use Quad9 w/ ECS Encrypted DNS over HTTPS</string>
 			<key>PayloadDisplayName</key>
-			<string>Quad9 DNS over HTTPS with ECS</string>
+			<string>Quad9 w/ ECS Encrypted DNS over HTTPS</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.dnsSettings.managed.1a93b54b-8541-4536-8302-c08159ca9184</string>
+			<string>com.apple.dnsSettings.managed.be15a83d-45e7-56c2-af36-23c6c8c72198</string>
 			<key>PayloadType</key>
 			<string>com.apple.dnsSettings.managed</string>
 			<key>PayloadUUID</key>
-			<string>ffee2c6b-9cff-4c2a-892c-e03788bcbd64</string>
+			<string>BE15A83D-45E7-56C2-AF36-23C6C8C72198</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>ProhibitDisablement</key>
@@ -36,9 +36,12 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Adds the Quad9 with ECS DNS to Big Sur and iOS 14 based systems</string>
+	<string>Configures device to use Quad9 w/ ECS over HTTPS
+Operated by Quad9 Foundation. Supports ECS. Blocks malware.
+Server location: 🇨🇭.
+Filtering: yes</string>
 	<key>PayloadDisplayName</key>
-	<string>Quad9 with ECS Encrypted DNS over HTTPS</string>
+	<string>Quad9 w/ ECS Encrypted DNS over HTTPS</string>
 	<key>PayloadIdentifier</key>
 	<string>com.paulmillr.apple-dns</string>
 	<key>PayloadRemovalDisallowed</key>
@@ -48,7 +51,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>088A5DC0-0E1F-4699-A56D-A709078D7603</string>
+	<string>C4627D69-4CBC-5EB3-A239-4BCE486AF2D9</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>

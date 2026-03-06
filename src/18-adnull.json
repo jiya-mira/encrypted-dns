@@ -1,0 +1,19 @@
+{
+    "names": {
+        "en": "ADNull DNS"
+    },
+    "notes": {
+        "en": "Public DNS operated by ADNull. Blocks ads & tracking. Paid plans offer personalized DNS with advanced ad and phishing blocking."
+    },
+    "website": "https://adnull.com",
+    "region": "UA",
+    "censorship": true,
+    "consent": "Free public DNS service by ADNull. Paid subscribers get a personalized subdomain (e.g. abc123.dns.adnull.com/dns-query) with customizable ad and phishing blocking — replace the hostname in the profile with your own before installing. Privacy policy: https://adnull.com/privacy",
+    "variants": {
+        "default": {
+            "https": {
+                "ServerURLOrName": "https://dns.adnull.com/dns-query"
+            }
+        }
+    }
+}

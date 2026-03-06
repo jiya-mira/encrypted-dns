@@ -20,15 +20,15 @@
 				<string>https://dns-family.adguard.com/dns-query</string>
 			</dict>
 			<key>PayloadDescription</key>
-			<string>Configures device to use AdGuard Family Protection Encrypted DNS over HTTPS</string>
+			<string>Configures device to use AdGuard DNS Family Protection Encrypted DNS over HTTPS</string>
 			<key>PayloadDisplayName</key>
-			<string>AdGuard Family Protection DNS over HTTPS</string>
+			<string>AdGuard DNS Family Protection Encrypted DNS over HTTPS</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.dnsSettings.managed.56f69d61-c1d2-422b-989a-adeeb1b6ddc0</string>
+			<string>com.apple.dnsSettings.managed.0efea210-5662-5682-a598-eb1533476312</string>
 			<key>PayloadType</key>
 			<string>com.apple.dnsSettings.managed</string>
 			<key>PayloadUUID</key>
-			<string>1cda01f8-b05b-4b0d-8675-44eeb5290564</string>
+			<string>0EFEA210-5662-5682-A598-EB1533476312</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>ProhibitDisablement</key>
@@ -36,9 +36,12 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Adds the AdGuard Family Protection DNS to Big Sur and iOS 14 based systems</string>
+	<string>Configures device to use AdGuard DNS Family Protection over HTTPS
+Operated by AdGuard Software Ltd. Blocks `Default` + malware &amp; adult content.
+Server location: 🇷🇺.
+Filtering: yes</string>
 	<key>PayloadDisplayName</key>
-	<string>AdGuard Family Protection DNS over HTTPS</string>
+	<string>AdGuard DNS Family Protection Encrypted DNS over HTTPS</string>
 	<key>PayloadIdentifier</key>
 	<string>com.paulmillr.apple-dns</string>
 	<key>PayloadRemovalDisallowed</key>
@@ -48,7 +51,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>A4475135-633A-4F15-A79B-BE15093DC97A</string>
+	<string>997964ED-B193-5362-B4AD-B40E479DA4D7</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>

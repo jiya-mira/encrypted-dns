@@ -11,8 +11,8 @@
 				<string>HTTPS</string>
 				<key>ServerAddresses</key>
 				<array>
-					<string>2620:10A:80BB::30</string>
-					<string>2620:10A:80BC::30</string>
+					<string>2620:10a:80bb::30</string>
+					<string>2620:10a:80bc::30</string>
 					<string>149.112.121.30</string>
 					<string>149.112.122.30</string>
 				</array>
@@ -20,15 +20,15 @@
 				<string>https://family.canadianshield.cira.ca/dns-query</string>
 			</dict>
 			<key>PayloadDescription</key>
-			<string>Configures device to use Canadian Shield Encrypted DNS over HTTPS</string>
+			<string>Configures device to use Canadian Shield Family Encrypted DNS over HTTPS</string>
 			<key>PayloadDisplayName</key>
-			<string>Canadian Shield DNS over HTTPS</string>
+			<string>Canadian Shield Family Encrypted DNS over HTTPS</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.dnsSettings.managed.9d6e5fdf-e404-4f34-ae94-27ed2f636ac4</string>
+			<string>com.apple.dnsSettings.managed.66866361-cb2d-5332-988f-b83b18a3e4b6</string>
 			<key>PayloadType</key>
 			<string>com.apple.dnsSettings.managed</string>
 			<key>PayloadUUID</key>
-			<string>35d5c8a0-afa6-4b36-a9fe-099a997b44ad</string>
+			<string>66866361-CB2D-5332-988F-B83B18A3E4B6</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>ProhibitDisablement</key>
@@ -36,9 +36,12 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Adds the Canadian Shield DNS to Big Sur and iOS 14 based systems</string>
+	<string>Configures device to use Canadian Shield Family over HTTPS
+Operated by the Canadian Internet Registration Authority (CIRA). Blocks malware, phishing &amp; adult content.
+Server location: 🇨🇦.
+Filtering: yes</string>
 	<key>PayloadDisplayName</key>
-	<string>Canadian Shield DNS over HTTPS</string>
+	<string>Canadian Shield Family Encrypted DNS over HTTPS</string>
 	<key>PayloadIdentifier</key>
 	<string>com.paulmillr.apple-dns</string>
 	<key>PayloadRemovalDisallowed</key>
@@ -48,7 +51,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>32E01895-86AB-40AE-ACD2-4460D584EA35</string>
+	<string>44C247CD-F321-54CB-A79A-6F42A958D2B9</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>

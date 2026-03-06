@@ -1,0 +1,36 @@
+{
+    "names": {
+        "en": "Example Encrypted DNS"
+    },
+    "hidden": true,
+    "variants": {
+        "default": {
+            "notes": {
+                "en": "Adds the Example Encrypted DNS over HTTPS to Big Sur and iOS 14 based systems"
+            },
+            "ServerAddresses": [
+                "2001:db8::1",
+                "2001:db8::2",
+                "192.0.0.1",
+                "192.0.0.2"
+            ],
+            "onDemandRules": [
+                {
+                    "Action": "Disconnect",
+                    "SSIDMatch": [
+                        "TRUSTED_NETWORK_1",
+                        "TRUSTED_NETWORK_2",
+                        "TRUSTED_NETWORK_3"
+                    ]
+                },
+                {
+                    "Action": "Connect"
+                }
+            ],
+            "https": {
+                "ServerURLOrName": "https://dns.example/dns-query",
+                "signature": "3046022100df99d84fc1178fecf5bb818f43b85a964ab4c208d232db6e76a5cdb204905201022100cf3cde149fe64a47dddf09dde9c812bfbcbc4d10ccd31ea4c879d859e4b711db"
+            }
+        }
+    }
+}
