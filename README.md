@@ -1,19 +1,41 @@
 # Encrypted DNS Profiles (Auto-Signed Edition)
 
-> **⚠️ The Issue with the Upstream Repo:**
-> The signed profiles in the original repository contain expired certificates, causing "Not Verified" security warnings on iOS and macOS devices.
->
-> **✅ The Solution in this Fork:**
-> This repository implements a **Zero-Touch Automation Workflow** to regenerate and sign all profiles using valid certificates. Updates are triggered automatically via a secure, local pipeline.
+This repository publishes signed `.mobileconfig` profiles for iOS / iPadOS / macOS with an operations-first release workflow.
 
-## 📥 Downloads
+## Project Direction
 
-**👉 [Browse the `signed/` Directory](./signed)**
+Upstream ([paulmillr/encrypted-dns](https://github.com/paulmillr/encrypted-dns)) now has its own build/sign toolchain.
+
+This fork continues to focus on:
+* a simpler and reliability-oriented workflow (`uv` + Python tools)
+* server-side automated re-signing
+* rolling releases for end users
+
+Roadmap note: we are evaluating a gradual shift toward automation-first maintenance of profile data and signed artifacts.
+
+## Why Follow This Fork
+
+* **Operational Simplicity**: One clear flow from sync -> sign -> release.
+* **Production-First**: Real server pipeline (`systemd` timer/service), not manual local-only steps.
+* **Fast Iteration**: Signed artifacts are regenerated and published with minimal manual work.
+
+## Latest Snapshot
+
+* **Last verified commit**: `5153a4a`
+* **Unsigned profiles**: `64`
+* **Signed profiles**: `64`
+* **Updated on**: March 6, 2026
+
+Watch this repository to follow upcoming release and maintenance changes.
+
+## Downloads
+
+**[Browse the `signed/` Directory](./signed)**
 
 All `.mobileconfig` files in the link above are:
-* **Valid**: Signed with a current certificate (No red warnings).
-* **Up-to-Date**: Automatically synchronized with upstream provider changes.
-* **Safe**: Generated in a secure, offline environment.
+* **Signed**: Generated from the current signing pipeline.
+* **Current**: Kept up-to-date by automated operational workflow.
+* **Ready to Install**: Built for Apple profile installation flow.
 
 ### How to Install
 1. Navigate to the `signed/` folder and choose your provider (e.g., Alidns, Google, Cloudflare).
@@ -21,23 +43,24 @@ All `.mobileconfig` files in the link above are:
 3. **iOS**: Go to `Settings` -> `Profile Downloaded` -> `Install`.
 4. **macOS**: Go to `System Settings` -> `Privacy & Security` -> `Profiles`.
 
-## ⚙️ Under the Hood (For Developers)
+## Under the Hood (For Developers)
 
-This project is powered by a set of **Python automation tools** designed for **Security** and **Efficiency**.
+This project is powered by Python automation tools for signing and release operations.
 
 * **Tech Stack**: Python (managed by [uv](https://github.com/astral-sh/uv)).
 * **Core Logic**:
-    * **Signing**: A dedicated script to handle certificate loading and profile signing.
-    * **Efficiency**: **Intelligent Change Detection** monitors source profiles, certificates, and automation logic to prevent redundant updates.
-* **Flexibility**: The tools support both **Interactive Mode** (CLI Wizard) and **Config Mode** (CI/CD ready).
+  * **Signing**: Scripted certificate loading and profile signing.
+  * **Efficiency**: Fingerprint-based change detection to avoid redundant re-signing.
+* **Runtime Modes**:
+  * **Config Mode** for server/CI tasks.
+  * **Force Mode** for explicit re-sign and publish runs.
 
-**Want to build your own signing workflow?**
-👉 **[Check out the Tools Documentation](./tools/README.md)**
+Tool docs: **[tools/README.md](./tools/README.md)**
 
-## 🔗 Acknowledgements
+## Acknowledgements
 
-This project is a fork of the original work by [paulmillr/encrypted-dns](https://github.com/paulmillr/encrypted-dns).
-All credits for the profile templates and provider data belong to the original author. This fork focuses solely on adding a **modern automation layer** to maintain validity.
+This project is a fork of [paulmillr/encrypted-dns](https://github.com/paulmillr/encrypted-dns).
+Credits for original profile templates and provider data belong to the upstream project.
 
 ---
 
